@@ -3,7 +3,8 @@ const cluster = require('cluster'),
   config = require('./config');
 
 
-function delay_connect(i) {
+function conn(i) {
+
   let client = http2.connect(config.path, config.settings);
 
     req = client.request({
@@ -19,7 +20,7 @@ function delay_connect(i) {
 
     req.on('end', () => {
       //console.log(`\n${data}`);
-      delay_connect(i)
+      conn(i)
     });
 
 }
@@ -37,7 +38,7 @@ if (cluster.isMaster) {
 } else {
 
   for (let i = 0; i < config.conn; i++) {
-    delay_connect(i)
+    conn(i)
   }
 
 }
