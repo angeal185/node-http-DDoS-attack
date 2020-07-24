@@ -1,0 +1,9 @@
+{
+  "clusters": 1,
+  "conn": 1,
+  "path": "http://localhost:8000",
+  "settings": {
+    "waitForTrailers": true,
+    "endStream": false
+  }
+}
